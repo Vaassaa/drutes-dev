@@ -55,6 +55,9 @@ program main
   real ::  stop_time
   real(kind=rkind) :: r, t
   integer :: fileid, i, j, ierrtime
+  integer :: file_conduct
+  real(kind=rkind), dimension(1,1) :: disp
+  type(integpnt_str) :: quadpnt_loc
   
   call system("rm -rf out/*")
   
@@ -73,7 +76,7 @@ program main
       close(fileid)
     end if
 
-    version_id%number = "12.0/2022"
+    version_id%number = "2.0/2025"
     version_id%reliability = "beta "
     
     call get_cmd_options()
@@ -110,6 +113,10 @@ program main
     call init_measured()
   
     call write_log("number of nodes:", int1=nodes%kolik, text2="number of elements:", int2=elements%kolik)
+  
+    CALL getcwd(writer)
+  
+    call write_log("current working directory:", text2=cut(writer))
 
     call set_pointers()
     
@@ -119,7 +126,6 @@ program main
 
     
     if (solve_bcfluxes) call init_bcfluxes()
-    
     
     if (drutes_config%it_method == 1 .or. drutes_config%it_method == 2) then
       call init_decomp()
@@ -132,6 +138,21 @@ program main
   
   call write_log("DRUtES solves ", text2=adjustl(trim(drutes_config%fullname)))
 
+  open(newunit=file_conduct, file="fileconduct", action="write", status="replace")
+  
+  quadpnt_loc%type_pnt="numb"
+!  quadpnt_loc%this_is_the_value=[-5.2_rkind, 10.0_rkind]
+  quadpnt_loc%this_is_the_value=-5.2
+  
+  
+  call pde(1)%pde_fnc(1)%dispersion(pde(1), 1_ikind, &
+                     quadpnt_loc, tensor=disp)
+                     
+!  call pde(1)%pde_fnc(2)%dispersion(pde(1), 1_ikind, &
+!                     quadpnt, tensor=disp(1:top,1:top))
+
+
+  stop
   call solve_pde(success)    
 
   
