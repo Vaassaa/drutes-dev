@@ -191,6 +191,7 @@ module objfnc
       
       call read_sep(fileid)
       
+      
       allocate(obs_ids(n*no_pdes))
       
       msg="Are the numbers of observation points for evaluating your objective function correct?"
@@ -224,6 +225,7 @@ module objfnc
         call fileread(columns(i, 1:noprop(i)), fileid, ranges=(/2_ikind, 5_ikind/), errmsg=msg, checklen=.TRUE.)
       end do
       
+      
       call read_sep(fileid)
       
       call fileread(fileinputs, fileid)  
@@ -231,6 +233,7 @@ module objfnc
       call read_sep(fileid)
       
       call write_log("The file with inputs for inverse modeling is: ", text2=cut(fileinputs))
+      
       
       expcols=0
       
@@ -320,6 +323,7 @@ module objfnc
       end if 
       
       
+      
       close(fileid)
       
       counter=0
@@ -333,6 +337,8 @@ module objfnc
         end if
       end do
       
+      
+
       allocate(exp_data(ubound(noprop,1)))
       
       allocate(exp_data(1)%time(counter))
@@ -365,6 +371,7 @@ module objfnc
         end do  
       end do
   
+
       deallocate(tmpdata)
       
 
@@ -488,14 +495,13 @@ module objfnc
         allocate(model_data(i)%data(datacount, noprop(i)))
       end do
       
-      
-      
+    
 
       do i=1, ubound(model_data,1)
         if (allocated(tmpdata)) deallocate(tmpdata)
         
-        if(pde(pde_comp(i))%print_mass) then
-          massdim = ubound(pde(pde_comp(i))%mass,1)
+        if(pde(pde_comp(1))%print_mass) then
+          massdim = ubound(pde(pde_comp(1))%mass,1)
         else
           massdim = 0
         end if
@@ -527,7 +533,7 @@ module objfnc
           end if
         end do
       end do  
-      
+
     
     end subroutine read_model
     
@@ -537,6 +543,7 @@ module objfnc
       
       
       call read_model()
+
 
       allocate(errors(ubound(model_data,1)))
       
@@ -573,7 +580,6 @@ module objfnc
                 
                 errors(i)%val(l) = errors(i)%val(l) + (modval - exp_data(n)%data(j,l))*(modval - exp_data(n)%data(j,l))
                 
-
               end do
             end do
            
@@ -583,6 +589,8 @@ module objfnc
       
       end do
         
+        
+   
       do i=1, ubound(errors,1)  
         errors(i)%val = sqrt(errors(i)%val/pos)
       end do

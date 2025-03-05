@@ -54,10 +54,9 @@ program main
   logical :: success
   real ::  stop_time
   real(kind=rkind) :: r, t
-  integer :: fileid, i, j, ierrtime
-  integer :: file_conduct
-  real(kind=rkind), dimension(1,1) :: disp
+  integer :: fileid, i, j, ierrtime, file_conduct
   type(integpnt_str) :: quadpnt_loc
+  real(kind=rkind), dimension(1,1) :: disp
   
   call system("rm -rf out/*")
   
@@ -138,21 +137,26 @@ program main
   
   call write_log("DRUtES solves ", text2=adjustl(trim(drutes_config%fullname)))
 
-  open(newunit=file_conduct, file="fileconduct", action="write", status="replace")
-  
+
+    open(newunit=file_conduct, file="fileconduct", action="write", status="replace")
+
   quadpnt_loc%type_pnt="numb"
 !  quadpnt_loc%this_is_the_value=[-5.2_rkind, 10.0_rkind]
   quadpnt_loc%this_is_the_value=-5.2
-  
-  
+
+
   call pde(1)%pde_fnc(1)%dispersion(pde(1), 1_ikind, &
                      quadpnt_loc, tensor=disp)
-                     
+
 !  call pde(1)%pde_fnc(2)%dispersion(pde(1), 1_ikind, &
 !                     quadpnt, tensor=disp(1:top,1:top))
 
 
   stop
+  call solve_pde(success)
+
+
+
   call solve_pde(success)    
 
   
