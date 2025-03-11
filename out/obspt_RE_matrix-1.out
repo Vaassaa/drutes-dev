@@ -1,0 +1,10 @@
+ #              _____________________  _______________________             #
+ #              ___  __ \__  __ \_  / / /_  /___  ____/_  ___/             #
+ #              __  / / /_  /_/ /  / / /_  __/_  __/  _____ \              #
+ #              _  /_/ /_  _, _// /_/ / / /_ _  /___  ____/ /              #
+ #              /_____/ /_/ |_| \____/  \__/ /_____/  /____/               #
+ #                                                                         #
+  
+ #        time                      h  [L]                   theta_l [-] theta_v [-sat degree        liquid flux [L/T] for: x              directions   cumulative flux|----| vapour flux [L/T] for: x              directions   cumulative flux|----| total flux [L/T] for: x              directions   cumulative flux|----|  
+ #-----------------------------------------------------------------------------------------------
+

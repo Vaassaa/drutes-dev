@@ -138,15 +138,20 @@ program main
   call write_log("DRUtES solves ", text2=adjustl(trim(drutes_config%fullname)))
 
 
-    open(newunit=file_conduct, file="fileconduct", action="write", status="replace")
+  open(newunit=file_conduct, file="fileconduct", action="write", status="replace")
 
   quadpnt_loc%type_pnt="numb"
 !  quadpnt_loc%this_is_the_value=[-5.2_rkind, 10.0_rkind]
-  quadpnt_loc%this_is_the_value=-5.2
+  quadpnt_loc%this_is_the_value=-1.0
 
 
   call pde(1)%pde_fnc(1)%dispersion(pde(1), 1_ikind, &
                      quadpnt_loc, tensor=disp)
+
+  write(file_conduct, *) "dispersion:"
+  write(file_conduct, *) disp  
+
+  close(file_conduct)
 
 !  call pde(1)%pde_fnc(2)%dispersion(pde(1), 1_ikind, &
 !                     quadpnt, tensor=disp(1:top,1:top))

@@ -1,0 +1,28 @@
+ #              _____________________  _______________________             #
+ #              ___  __ \__  __ \_  / / /_  /___  ____/_  ___/             #
+ #              __  / / /_  /_/ /  / / /_  __/_  __/  _____ \              #
+ #              _  /_/ /_  _, _// /_/ / / /_ _  /___  ____/ /              #
+ #              /_____/ /_/ |_| \____/  \__/ /_____/  /____/               #
+ #                                                                         #
+  
+ DRUtES is initializing, reading input files
+ ---------------------------------------------------------------
+ 17hrs : 23min : 11.842s  -  2025/03/11    total number of parallel images is:                    1
+ ---------------------------------------------------------------
+ 17hrs : 23min : 11.842s  -  2025/03/11    reading input files and allocating...
+ ---------------------------------------------------------------
+ 17hrs : 23min : 11.843s  -  2025/03/11    number of nodes:                   84 number of elements:                   83
+ ---------------------------------------------------------------
+ 17hrs : 23min : 11.843s  -  2025/03/11    current working directory: /home/vstein/Documents/PhD/Code/drutes-dev
+ ---------------------------------------------------------------
+ 17hrs : 23min : 11.903s  -  2025/03/11    detected                 1067 records in drutes.conf/evaporation/ebalance.in
+ ---------------------------------------------------------------
+ 17hrs : 23min : 11.970s  -  2025/03/11    detected                 1067 records in drutes.conf/evaporation/rain.in
+ ---------------------------------------------------------------
+ 17hrs : 23min : 11.982s  -  2025/03/11    detected hourly time step for rainfall data
+ ---------------------------------------------------------------
+ 17hrs : 23min : 11.982s  -  2025/03/11    analyzing mesh structure...
+ ---------------------------------------------------------------
+ 17hrs : 23min : 11.983s  -  2025/03/11    The file with inputs for inverse modeling is: drutes.conf/mariana_optim/input_theta.dat
+ ---------------------------------------------------------------
+ 17hrs : 23min : 11.991s  -  2025/03/11    DRUtES solves coupled heat and Richards equation with evaporation
